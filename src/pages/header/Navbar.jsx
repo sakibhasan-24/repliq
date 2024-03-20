@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { CiMenuBurger } from "react-icons/ci";
+import { useSelector } from "react-redux";
 export default function Navbar() {
+  const { currentUser } = useSelector((state) => state.user);
+  // console.log(currentUser);
   const location = useLocation();
   const handleActiveRoute = (route) => {
     if (route === location.pathname) return true;
@@ -32,19 +35,34 @@ export default function Navbar() {
           className={`mr-5 hover:text-orange-400 ${
             handleActiveRoute("/") && "border-b-2 border-orange-400"
           }`}
-          to="/"
+          to="/container"
         >
-          Add products
+          views
+        </Link>
+        <Link
+          className={`mr-5 hover:text-orange-400 ${
+            handleActiveRoute("/products") && "border-b-2 border-orange-400"
+          }`}
+          to="/products"
+        >
+          Products
         </Link>
         <Link className="mr-5 hover:text-orange-400" to="/">
           Add Customer
         </Link>
-        <Link to="/login" className="mr-5 hover:text-orange-400">
-          Login
-        </Link>
+
         <Link className="mr-5 hover:text-orange-400" to="/">
           Products
         </Link>
+        {currentUser ? (
+          <Link className="mr-5 hover:text-orange-400" to="/">
+            logout
+          </Link>
+        ) : (
+          <Link className="my-3 text-white hover:text-orange-400" to="/login">
+            Login
+          </Link>
+        )}
       </div>
       <CiMenuBurger
         className="text-4xl sm:hidden cursor-pointer"
@@ -71,9 +89,15 @@ export default function Navbar() {
           <Link className="my-3 text-white hover:text-orange-400" to="/">
             Products
           </Link>
-          <Link className="my-3 text-white hover:text-orange-400" to="/login">
-            Login
-          </Link>
+          {currentUser ? (
+            <Link className="my-3 text-white hover:text-orange-400" to="/login">
+              Logout
+            </Link>
+          ) : (
+            <Link className="my-3 text-white hover:text-orange-400" to="/login">
+              Login
+            </Link>
+          )}
         </div>
       )}
     </div>

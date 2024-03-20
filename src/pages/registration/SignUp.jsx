@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 export default function SignUp() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
+  const [userName, setUserName] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -52,6 +53,7 @@ export default function SignUp() {
         password: hashedPassword,
         profilePicture,
         createdAt: new Date(),
+        userName,
       };
       // console.log(userInfo);
       const user = sessionStorage.setItem("userInfo", JSON.stringify(userInfo));
@@ -80,6 +82,14 @@ export default function SignUp() {
           onSubmit={handleFormSubmit}
           className="flex flex-col gap-6 items-center justify-center"
         >
+          <input
+            type="text"
+            placeholder="name"
+            className="input input-bordered w-full max-w-xs"
+            // onChange={(e)=>{console.log(e.target.value)}
+            onChange={(e) => setUserName(e.target.value)}
+            required
+          />
           <input
             type="text"
             placeholder="Phone Number"

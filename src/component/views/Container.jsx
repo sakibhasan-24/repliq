@@ -7,7 +7,7 @@ export default function Container() {
       <div className="w-full sm:w-1/3 md:w-1/4  ">
         <div className="bg-white p-2 shadow-md rounded-lg">
           <Link
-            to="/container/registration"
+            to="/container/registration/signup"
             className="text-xs font-semibold mb-2"
           >
             Registration

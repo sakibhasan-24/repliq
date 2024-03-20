@@ -4,7 +4,9 @@ import Container from "../../component/views/Container";
 export default function Home() {
   return (
     <div>
-      <Container />
+      <div>
+        <Container />
+      </div>
     </div>
   );
 }

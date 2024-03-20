@@ -5,6 +5,8 @@ import Container from "../component/views/Container";
 import RegistrationLayout from "../component/views/RegistrationLayout";
 import Login from "../pages/registration/Login";
 import SignUp from "../pages/registration/SignUp";
+import HomeItems from "../pages/Home/HomeItems";
+import Products from "../pages/products/Products";
 
 const router = createBrowserRouter([
   {
@@ -14,7 +16,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <Home />,
+        element: <HomeItems />,
+      },
+      {
+        path: "/products",
+        element: <Products />,
       },
       {
         path: "/container",

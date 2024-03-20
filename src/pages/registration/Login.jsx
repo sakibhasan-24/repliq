@@ -2,13 +2,26 @@ import React, { useState } from "react";
 
 import bcryptjs from "bcryptjs";
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { loginSuccess } from "../../redux/user/userSlice";
+import { useNavigate } from "react-router-dom";
 export default function Login() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { currentUser } = useSelector((state) => state.user);
+  // console.log(currentUser);
   const userDetails = JSON.parse(sessionStorage.getItem("userInfo"));
+  if (!userDetails) {
+    navigate("/container/registration/signup");
+    toast.error("Please Register First");
+    return;
+  }
+  console.log(userDetails);
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -19,11 +32,15 @@ export default function Login() {
       return;
     }
     if (phoneNumber !== userDetails.phoneNumber) {
-      toast.error("Invalid Credentials");
       setLoading(false);
+      toast.error("Invalid Credentials");
       return;
     }
     // save for some action(redux)
+    dispatch(loginSuccess(userDetails));
+    setLoading(false);
+    toast.success("Login Successfully");
+    navigate("/");
   };
   return (
     <div className="w-full">
