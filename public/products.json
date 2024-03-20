@@ -24,7 +24,7 @@
     "category": "Home & Kitchen",
     "details": "The KitchenAid Artisan Series Stand Mixer is a must-have appliance for any kitchen enthusiast. With its powerful motor and versatile attachments, this stand mixer makes baking and cooking a breeze.",
     "price": 349.99,
-    "offer": ""
+    "offer": 5
   },
   {
     "_id": "4",
@@ -69,7 +69,7 @@
     "category": "Electronics",
     "details": "Immerse yourself in your favorite music with the Sony WH-1000XM4 Wireless Noise-Canceling Headphones. These premium headphones feature industry-leading noise cancellation technology and high-quality sound for an unparalleled listening experience.",
     "price": 349.99,
-    "offer": "10% off"
+    "offer": 10
   },
   {
     "_id": "9",
