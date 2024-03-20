@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { CiMenuBurger } from "react-icons/ci";
 export default function Navbar() {
+  const location = useLocation();
+  const handleActiveRoute = (route) => {
+    if (route === location.pathname) return true;
+  };
   const [sideBar, setSideBar] = useState(false);
   return (
     <div className=" flex justify-between items-center">
@@ -24,7 +28,12 @@ export default function Navbar() {
       </div>
 
       <div className="hidden sm:flex font-semibold flex-col sm:flex-row items-center">
-        <Link className="mr-5 hover:text-orange-400" to="/">
+        <Link
+          className={`mr-5 hover:text-orange-400 ${
+            handleActiveRoute("/") && "border-b-2 border-orange-400"
+          }`}
+          to="/"
+        >
           Add products
         </Link>
         <Link className="mr-5 hover:text-orange-400" to="/">

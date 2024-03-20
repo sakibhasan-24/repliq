@@ -1,5 +1,10 @@
 import React from "react";
+import Container from "../../component/views/Container";
 
 export default function Home() {
-  return <div>Home</div>;
+  return (
+    <div>
+      <Container />
+    </div>
+  );
 }
