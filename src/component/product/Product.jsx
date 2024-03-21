@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Product({ product }) {
   const { _id, image, price, offer, category, details, name } = product;
@@ -31,9 +32,12 @@ export default function Product({ product }) {
           <button className="w-1/2 bg-indigo-500 text-white py-2 px-4 rounded-lg mt-4 hover:bg-indigo-600 transition-colors duration-300">
             Add to Cart
           </button>
-          <button className="w-1/2 bg-orange-900 text-white py-2 px-4 rounded-lg mt-4 hover:bg-orange-600 transition-colors duration-300">
-            view Details
-          </button>
+          <Link
+            className="w-1/2 bg-orange-900 text-white py-2 px-4 rounded-lg mt-4 hover:bg-orange-600 transition-colors duration-300"
+            to={`/details/${_id}`}
+          >
+            <button>view Details</button>
+          </Link>
         </div>
       </div>
     </div>
