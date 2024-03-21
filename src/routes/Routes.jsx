@@ -10,6 +10,8 @@ import Products from "../pages/products/Products";
 import Product from "../component/product/Product";
 import ProductDetails from "../component/product/ProductDetails";
 import Checkout from "../pages/checkout/Checkout";
+import AddUser from "../pages/adduser/AddUser";
+import UserDetails from "../pages/adduser/UserDetails";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,14 @@ const router = createBrowserRouter([
       {
         path: "/checkout",
         element: <Checkout />,
+      },
+      {
+        path: "/add-user",
+        element: <AddUser />,
+      },
+      {
+        path: "/user/details/:newId",
+        element: <UserDetails />,
       },
       {
         path: "/details/:id",

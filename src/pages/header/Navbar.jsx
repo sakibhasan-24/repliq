@@ -82,7 +82,7 @@ export default function Navbar() {
         >
           Products
         </Link>
-        <Link className="mr-5 hover:text-orange-400" to="/">
+        <Link className="mr-5 hover:text-orange-400" to="/add-user">
           Add Customer
         </Link>
 
@@ -118,7 +118,10 @@ export default function Navbar() {
           <Link className="my-3 text-white hover:text-orange-400" to="/">
             Add Products
           </Link>
-          <Link className="my-3 text-white hover:text-orange-400" to="/">
+          <Link
+            className="my-3 text-white hover:text-orange-400"
+            to="/add-user"
+          >
             Add Customer
           </Link>
           <Link className="my-3 text-white hover:text-orange-400" to="/">
