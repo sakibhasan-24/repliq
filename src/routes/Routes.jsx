@@ -13,6 +13,8 @@ import Checkout from "../pages/checkout/Checkout";
 import AddUser from "../pages/adduser/AddUser";
 import UserDetails from "../pages/adduser/UserDetails";
 import Admin from "../pages/admin/Admin";
+import EmailPass from "../pages/regularLogin/EmailPass";
+import EmailPassLogin from "../pages/regularLogin/EmailPassLogin";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +70,14 @@ const router = createBrowserRouter([
             ],
           },
         ],
+      },
+      {
+        path: "/email-pass",
+        element: <EmailPass />,
+      },
+      {
+        path: "/email-pass/login",
+        element: <EmailPassLogin />,
       },
     ],
   },

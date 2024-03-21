@@ -11,6 +11,13 @@ import Swal from "sweetalert2";
 
 export default function Checkout() {
   const { items } = useSelector((state) => state.items);
+  const itemsPrice = items
+    ?.map((item) => item.price)
+    .reduce((acc, cur) => acc + cur, 0)
+    .toFixed(2);
+
+  const charge = (itemsPrice * 0.05).toFixed(2);
+  // console.log(itemsPrice);
   const dispatch = useDispatch();
   const handleDelete = (item) => {
     dispatch(removeItem(item.newId));
@@ -43,6 +50,13 @@ export default function Checkout() {
             <Item key={uuidv4()} item={item} handleDelete={handleDelete} />
           ))}
       </div>
+      {items?.length > 0 && (
+        <div className="text-xl font-semibold text-slate-600 space-y-3 my-2">
+          <h1>total Price ${itemsPrice}</h1>
+          <p className="">Delivery charge: ${charge}</p>
+          <h1>total charge : ${itemsPrice + charge}</h1>
+        </div>
+      )}
       <div>
         {items?.length === 0 ? (
           <Link to="/">

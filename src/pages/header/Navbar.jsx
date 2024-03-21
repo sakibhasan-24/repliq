@@ -41,8 +41,7 @@ export default function Navbar() {
       <div className="hidden sm:flex font-semibold flex-col sm:flex-row items-center">
         <Link
           className={`mr-5 hover:text-orange-400 ${
-            handleActiveRoute("/addedProducts") &&
-            "border-b-2 border-orange-400"
+            handleActiveRoute("/checkout") && "border-b-2 border-orange-400"
           }`}
           to="/checkout"
         >
@@ -68,7 +67,7 @@ export default function Navbar() {
         </Link>
         <Link
           className={`mr-5 hover:text-orange-400 ${
-            handleActiveRoute("/") && "border-b-2 border-orange-400"
+            handleActiveRoute("/container") && "border-b-2 border-orange-400"
           }`}
           to="/container"
         >
@@ -82,11 +81,21 @@ export default function Navbar() {
         >
           Products
         </Link>
-        <Link className="mr-5 hover:text-orange-400" to="/add-user">
+        <Link
+          to="/add-user"
+          className={`mr-5 hover:text-orange-400 ${
+            handleActiveRoute("/add-user") && "border-b-2 border-orange-400"
+          }`}
+        >
           Add Customer
         </Link>
 
-        <Link className="mr-5 hover:text-orange-400" to="/admin">
+        <Link
+          className={`mr-5 hover:text-orange-400 ${
+            handleActiveRoute("/admin") && "border-b-2 border-orange-400"
+          }`}
+          to="/admin"
+        >
           admin
         </Link>
         {currentUser ? (
@@ -94,7 +103,12 @@ export default function Navbar() {
             logout
           </Link>
         ) : (
-          <Link className="my-3 text-white hover:text-orange-400" to="/login">
+          <Link
+            className={`mr-5 hover:text-orange-400 ${
+              handleActiveRoute("/login") && "border-b-2 border-orange-400"
+            }`}
+            to="/login"
+          >
             Login
           </Link>
         )}
@@ -115,27 +129,60 @@ export default function Navbar() {
             className={`text-4xl cursor-pointer mt-4 `}
             onClick={() => setSideBar(!sideBar)}
           />
-          <Link className="my-3 text-white hover:text-orange-400" to="/">
+          <Link
+            className={`my-3 text-white hover:text-orange-400 ${
+              handleActiveRoute("/checkout") &&
+              "border-b-2 border-orange-400 text-orange-400"
+            }`}
+            to="/checkout"
+          >
             Add Products
           </Link>
           <Link
-            className="my-3 text-white hover:text-orange-400"
+            className={`my-3 text-white hover:text-orange-400 ${
+              handleActiveRoute("/add-user") &&
+              "border-b-2 border-orange-400 text-orange-400"
+            }`}
             to="/add-user"
           >
             Add Customer
           </Link>
-          <Link className="my-3 text-white hover:text-orange-400" to="/">
+          <Link
+            className={`my-3 text-white hover:text-orange-400 ${
+              handleActiveRoute("/products") &&
+              "border-b-2 border-orange-400 text-orange-400"
+            }`}
+            to="/products"
+          >
             Products
           </Link>
-          <Link className="my-3 text-white hover:text-orange-400" to="/admin">
+          <Link
+            className={`my-3 text-white hover:text-orange-400 ${
+              handleActiveRoute("/admin") &&
+              "border-b-2 border-orange-400 text-orange-400"
+            }`}
+            to="/admin"
+          >
             admin
           </Link>
           {currentUser ? (
-            <Link className="my-3 text-white hover:text-orange-400" to="/login">
+            <Link
+              className={`my-3 text-white hover:text-orange-400 ${
+                handleActiveRoute("/") &&
+                "border-b-2 border-orange-400 text-orange-400"
+              }`}
+              to="/"
+            >
               Logout
             </Link>
           ) : (
-            <Link className="my-3 text-white hover:text-orange-400" to="/login">
+            <Link
+              className={`my-3 text-white hover:text-orange-400 ${
+                handleActiveRoute("/checkout") &&
+                "border-b-2 border-orange-400 text-orange-400"
+              }`}
+              to="/"
+            >
               Login
             </Link>
           )}
