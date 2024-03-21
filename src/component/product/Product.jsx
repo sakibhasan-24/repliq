@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 export default function Product({ product, handleAddProduct }) {
   const { _id, image, price, offer, category, details, name } = product;
   return (
-    <div className="w-[450px] sm:w-full cursor-pointer   mx-auto my-12 border-2 p-2 flex flex-col gap-4 shadow-lg shadow-slate-200 rounded-md">
+    <div
+      data-aos="fade-right"
+      className="w-[450px] sm:w-full cursor-pointer   mx-auto my-12 border-2 p-2 flex flex-col gap-4 shadow-lg shadow-slate-200 rounded-md"
+    >
       <div className="   p-4 rounded-lg flex-grow">
         <img
           className="w-full hover:scale-105 overflow-hidden transition-all duration-500 h-[300px]"

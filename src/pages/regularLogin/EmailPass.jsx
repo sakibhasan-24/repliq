@@ -1,8 +1,31 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { Line } from "recharts";
-
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import bcryptjs from "bcryptjs";
+import { toast } from "react-toastify";
 export default function EmailPass() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Perform form submission logic here
+    if (email.length == 0 || password.length == 0) {
+      toast.error("all fields are required");
+    }
+    const hashedPassword = bcryptjs.hashSync(password);
+    sessionStorage.removeItem("userInfo");
+    const userDetails = {
+      email,
+      password: hashedPassword,
+      profilePicture:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlQc8AS8lajjEalCKTTlR9hDnjlSeg0QPubQ&usqp=CAU",
+    };
+    sessionStorage.setItem("userInfo", JSON.stringify(userDetails));
+    toast.success("account created successful");
+    setEmail("");
+    setPassword("");
+    navigate("/email-pass/login");
+  };
   return (
     <div className="w-full">
       <h1 className="text-center my-8 text-slate-800 font-semibold">
@@ -10,25 +33,15 @@ export default function EmailPass() {
       </h1>
       <div className="">
         <form
-          //   onSubmit={handleFormSubmit}
+          onSubmit={handleSubmit}
           className="flex flex-col gap-6 items-center justify-center"
         >
           <input
-            type="text"
-            placeholder="name"
+            type="email"
+            placeholder="email"
             className="input input-bordered w-full max-w-xs"
-            // onChange={(e)=>{console.log(e.target.value)}
-            // onChange={(e) => setUserName(e.target.value)}
             required
-          />
-          <input
-            type="text"
-            placeholder="Phone Number"
-            className="input input-bordered w-full max-w-xs"
-            // onChange={(e)=>{console.log(e.target.value)}
-            //   onChange={(e) => setPhoneNumber(e.target.value)}
-            required
-            maxLength={11}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <input
             required
@@ -41,6 +54,7 @@ export default function EmailPass() {
             type="submit"
             //   disabled={loading}
             //   value={loading ? "loading....." : "sigUp"}
+
             value={"signup"}
             className="w-full max-w-xs py-2 rounded-xl cursor-pointer bg-slate-800 text-white hover:bg-slate-700 transition-all duration-300"
           />

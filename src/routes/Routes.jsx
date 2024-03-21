@@ -15,12 +15,13 @@ import UserDetails from "../pages/adduser/UserDetails";
 import Admin from "../pages/admin/Admin";
 import EmailPass from "../pages/regularLogin/EmailPass";
 import EmailPassLogin from "../pages/regularLogin/EmailPassLogin";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "",
     element: <MainLayout />,
-    errorElement: <h1>Error 404</h1>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "",

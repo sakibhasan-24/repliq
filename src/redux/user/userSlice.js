@@ -20,6 +20,9 @@ const userSlice = createSlice({
     loginFailure: (state) => {
       state.loading = false;
     },
+    logOutSuccess: (state) => {
+      state.currentUser = null;
+    },
   },
 });
 

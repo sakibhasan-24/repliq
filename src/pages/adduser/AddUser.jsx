@@ -9,6 +9,7 @@ import useAddUser from "../../hooks/useAddUser";
 import Swal from "sweetalert2";
 import { CiTrash } from "react-icons/ci";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 export default function AddUser() {
   const [formData, setFormData] = useState({});
@@ -61,6 +62,10 @@ export default function AddUser() {
   // console.log(formData);
   return (
     <div className=" w-full sm:max-w-6xl  mx-auto my-8">
+      <Helmet>
+        <title>Add User</title>
+      </Helmet>
+      ;
       <h2 className="text-center font-semibold text-orange-600 text-2xl">
         Add User
       </h2>

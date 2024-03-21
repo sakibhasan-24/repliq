@@ -6,7 +6,7 @@ export default function HomeItems() {
   return (
     <div>
       <div className="w-full sm:max-w-4xl md:max-w-6xl mx-auto ">
-        {/* <Banner /> */}
+        <Banner />
       </div>
       <div className="w-full sm:max-w-4xl md:max-w-6xl mx-auto ">
         <Products />

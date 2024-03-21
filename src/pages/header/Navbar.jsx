@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 // import { CiShoppingCart } from "react-icons/ci";
 import { CiMenuBurger, CiShoppingCart } from "react-icons/ci";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useAddProducts from "../../hooks/useAddProducts";
+import { logOutSuccess } from "../../redux/user/userSlice";
 export default function Navbar() {
   const { currentUser } = useSelector((state) => state.user);
-
+  const dispatch = useDispatch();
   // const { addProductsItems } = useSelector((state) => state.addItems);
   // console.log(addProductsItems);
   const { items } = useSelector((state) => state.items);
@@ -18,6 +19,9 @@ export default function Navbar() {
   const [sideBar, setSideBar] = useState(false);
   const [addProducts] = useAddProducts();
   // console.log(addProducts);
+  const handleLogOut = () => {
+    dispatch(logOutSuccess());
+  };
   return (
     <div className=" flex justify-between items-center">
       <div>
@@ -99,15 +103,20 @@ export default function Navbar() {
           admin
         </Link>
         {currentUser ? (
-          <Link className="mr-5 hover:text-orange-400" to="/">
+          <Link
+            onClick={handleLogOut}
+            className="mr-5 hover:text-orange-400"
+            to="/"
+          >
             logout
           </Link>
         ) : (
           <Link
             className={`mr-5 hover:text-orange-400 ${
-              handleActiveRoute("/login") && "border-b-2 border-orange-400"
+              handleActiveRoute("/container/registration/login") &&
+              "border-b-2 border-orange-400"
             }`}
-            to="/login"
+            to="/container/registration/login"
           >
             Login
           </Link>
@@ -167,6 +176,7 @@ export default function Navbar() {
           </Link>
           {currentUser ? (
             <Link
+              onClick={handleLogOut}
               className={`my-3 text-white hover:text-orange-400 ${
                 handleActiveRoute("/") &&
                 "border-b-2 border-orange-400 text-orange-400"
@@ -178,10 +188,10 @@ export default function Navbar() {
           ) : (
             <Link
               className={`my-3 text-white hover:text-orange-400 ${
-                handleActiveRoute("/checkout") &&
+                handleActiveRoute("/container/registration/login") &&
                 "border-b-2 border-orange-400 text-orange-400"
               }`}
-              to="/"
+              to="/container/registration/login"
             >
               Login
             </Link>

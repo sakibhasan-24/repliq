@@ -10,6 +10,7 @@ import {
 import { useSelector } from "react-redux";
 import useGetProducts from "../../hooks/useGetProducts";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 export default function Admin() {
   const { usersList } = useSelector((state) => state.usersList);
@@ -55,6 +56,9 @@ export default function Admin() {
 
   return (
     <div className="max-w-6xl mx-auto p-8">
+      <Helmet>
+        <title>Admin</title>
+      </Helmet>
       <h1 className="text-3xl font-bold mb-4">Admin Dashboard</h1>
       <ResponsiveContainer width="100%" height={400}>
         <PieChart>

@@ -1,7 +1,42 @@
-import React from "react";
-import { Link } from "react-router-dom";
-
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import bcryptjs from "bcryptjs";
+import { loginSuccess } from "../../redux/user/userSlice";
 export default function EmailPassLogin() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const { currentUser } = useSelector((state) => state.user);
+  //   console.log(currentUser);
+
+  const navigate = useNavigate();
+  const userDetailsInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+
+  useEffect(() => {
+    if (currentUser) toast.success("already you are logged in");
+  }, [currentUser]);
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    // dispatch(login(email,password));
+    if (userDetailsInfo?.email !== email) {
+      toast.error("Wrong Crediantials");
+      return;
+    }
+    const validPass = bcryptjs.compareSync(password, userDetailsInfo?.password);
+    if (!validPass) {
+      toast.error("Wrong Crediantials");
+      return;
+    }
+    // console.log(email, password);
+    if (userDetailsInfo?.email === email && validPass) {
+      toast.success("Login Successfull");
+      dispatch(loginSuccess(userDetailsInfo));
+      navigate("/");
+    }
+  };
   return (
     <div className="w-full">
       <h1 className="text-center my-8 text-slate-800 font-semibold">
@@ -9,25 +44,15 @@ export default function EmailPassLogin() {
       </h1>
       <div className="">
         <form
-          //   onSubmit={handleFormSubmit}
+          onSubmit={handleLogin}
           className="flex flex-col gap-6 items-center justify-center"
         >
           <input
-            type="text"
-            placeholder="name"
+            type="email"
+            placeholder="email"
             className="input input-bordered w-full max-w-xs"
-            // onChange={(e)=>{console.log(e.target.value)}
-            // onChange={(e) => setUserName(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             required
-          />
-          <input
-            type="text"
-            placeholder="Phone Number"
-            className="input input-bordered w-full max-w-xs"
-            // onChange={(e)=>{console.log(e.target.value)}
-            //   onChange={(e) => setPhoneNumber(e.target.value)}
-            required
-            maxLength={11}
           />
           <input
             required
@@ -38,9 +63,7 @@ export default function EmailPassLogin() {
           />
           <input
             type="submit"
-            //   disabled={loading}
-            //   value={loading ? "loading....." : "sigUp"}
-            value={"signup"}
+            value={"login"}
             className="w-full max-w-xs py-2 rounded-xl cursor-pointer bg-slate-800 text-white hover:bg-slate-700 transition-all duration-300"
           />
         </form>

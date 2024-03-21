@@ -21,7 +21,7 @@ export default function Login() {
     toast.error("Please Register First");
     return;
   }
-  console.log(userDetails);
+  // console.log(userDetails);
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
