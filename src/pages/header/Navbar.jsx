@@ -86,8 +86,8 @@ export default function Navbar() {
           Add Customer
         </Link>
 
-        <Link className="mr-5 hover:text-orange-400" to="/checkout">
-          checkout
+        <Link className="mr-5 hover:text-orange-400" to="/admin">
+          admin
         </Link>
         {currentUser ? (
           <Link className="mr-5 hover:text-orange-400" to="/">
@@ -126,6 +126,9 @@ export default function Navbar() {
           </Link>
           <Link className="my-3 text-white hover:text-orange-400" to="/">
             Products
+          </Link>
+          <Link className="my-3 text-white hover:text-orange-400" to="/admin">
+            admin
           </Link>
           {currentUser ? (
             <Link className="my-3 text-white hover:text-orange-400" to="/login">

@@ -12,6 +12,7 @@ import ProductDetails from "../component/product/ProductDetails";
 import Checkout from "../pages/checkout/Checkout";
 import AddUser from "../pages/adduser/AddUser";
 import UserDetails from "../pages/adduser/UserDetails";
+import Admin from "../pages/admin/Admin";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/checkout",
         element: <Checkout />,
+      },
+      {
+        path: "/admin",
+        element: <Admin />,
       },
       {
         path: "/add-user",
@@ -55,6 +60,7 @@ const router = createBrowserRouter([
                 path: "/container/registration/login",
                 element: <Login />,
               },
+
               {
                 path: "/container/registration/signup",
                 element: <SignUp />,

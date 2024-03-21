@@ -5,7 +5,13 @@ export default function Container() {
   return (
     <div className="max-w-xl sm:max-w-6xl mx-auto p-2 flex flex-col sm:flex-row gap-4">
       <div className="w-full sm:w-1/3 md:w-1/4  ">
-        <div className="bg-white p-2 shadow-md rounded-lg">
+        <div className="bg-white p-2 shadow-md rounded-lg flex flex-col gap-6">
+          <Link
+            to="/container/registration/admin"
+            className="text-xs font-semibold mb-2"
+          >
+            Admin
+          </Link>
           <Link
             to="/container/registration/signup"
             className="text-xs font-semibold mb-2"
