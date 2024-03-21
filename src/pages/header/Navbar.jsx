@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { CiMenuBurger } from "react-icons/ci";
+// import { CiShoppingCart } from "react-icons/ci";
+import { CiMenuBurger, CiShoppingCart } from "react-icons/ci";
 import { useSelector } from "react-redux";
+import useAddProducts from "../../hooks/useAddProducts";
 export default function Navbar() {
   const { currentUser } = useSelector((state) => state.user);
-  // console.log(currentUser);
+
+  // const { addProductsItems } = useSelector((state) => state.addItems);
+  // console.log(addProductsItems);
+  const { items } = useSelector((state) => state.items);
+  // console.log(items);
   const location = useLocation();
   const handleActiveRoute = (route) => {
     if (route === location.pathname) return true;
   };
   const [sideBar, setSideBar] = useState(false);
+  const [addProducts] = useAddProducts();
+  // console.log(addProducts);
   return (
     <div className=" flex justify-between items-center">
       <div>
@@ -33,6 +41,33 @@ export default function Navbar() {
       <div className="hidden sm:flex font-semibold flex-col sm:flex-row items-center">
         <Link
           className={`mr-5 hover:text-orange-400 ${
+            handleActiveRoute("/addedProducts") &&
+            "border-b-2 border-orange-400"
+          }`}
+          to="/checkout"
+        >
+          <div className="indicator">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+              />
+            </svg>
+            <span className="badge badge-sm indicator-item">
+              {items.length}
+            </span>
+          </div>
+        </Link>
+        <Link
+          className={`mr-5 hover:text-orange-400 ${
             handleActiveRoute("/") && "border-b-2 border-orange-400"
           }`}
           to="/container"
@@ -51,8 +86,8 @@ export default function Navbar() {
           Add Customer
         </Link>
 
-        <Link className="mr-5 hover:text-orange-400" to="/">
-          Products
+        <Link className="mr-5 hover:text-orange-400" to="/checkout">
+          checkout
         </Link>
         {currentUser ? (
           <Link className="mr-5 hover:text-orange-400" to="/">

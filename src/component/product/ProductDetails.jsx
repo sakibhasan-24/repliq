@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Puff } from "react-loader-spinner";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function ProductDetails() {
   const [singleProduct, setSingleProduct] = useState({});
   const [products, setProducts] = useState([]);
   const { id } = useParams();
+  const navigate = useNavigate();
   //   console.log(id);
   useEffect(() => {
     fetch("/products.json")
@@ -15,6 +17,15 @@ export default function ProductDetails() {
   }, []);
   //   console.log(products);
   const detailsProduct = products.find((product) => product._id == id);
+  if (!detailsProduct || Object.keys(detailsProduct).length === 0) {
+    return (
+      <div className="flex items-center justify-center">
+        <Puff />
+      </div>
+    );
+  }
+  //   console.log(Object.keys(ProductDetails).length);
+
   return (
     <section className="my-12 w-full p-4 sm:max-w-3xl  mx-auto">
       <div className="shadow-2xl py-2 px-4 rounded-md">
@@ -50,6 +61,14 @@ export default function ProductDetails() {
             </p>
           </div>
         )}
+      </div>
+      <div>
+        <button
+          onClick={() => navigate(-1)}
+          className="bg-slate-700 py-2 rounded-md px-4 font-bold text-white"
+        >
+          Back
+        </button>
       </div>
     </section>
   );

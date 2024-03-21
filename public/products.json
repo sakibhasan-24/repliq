@@ -6,7 +6,7 @@
     "category": "Electronics",
     "details": "The Samsung Galaxy S21 Ultra is the epitome of smartphone technology, featuring a stunning 6.8-inch Dynamic AMOLED display, a powerful Snapdragon 888 processor, and a versatile quad-camera system.",
     "price": 1199.99,
-    "offer": "5% off"
+    "offer": 10
   },
   {
     "_id": "2",
@@ -78,6 +78,6 @@
     "category": "Sports & Outdoors",
     "details": "Keep your drinks hot or cold for hours with the Yeti Rambler 20 oz Tumbler. This durable stainless steel tumbler features double-wall vacuum insulation and a MagSlider lid for added convenience.",
     "price": 29.99,
-    "offer": ""
+    "offer": 2
   }
 ]

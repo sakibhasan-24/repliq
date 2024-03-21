@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Product({ product }) {
+export default function Product({ product, handleAddProduct }) {
   const { _id, image, price, offer, category, details, name } = product;
   return (
     <div className="w-[450px] sm:w-full cursor-pointer   mx-auto my-12 border-2 p-2 flex flex-col gap-4 shadow-lg shadow-slate-200 rounded-md">
@@ -29,7 +29,10 @@ export default function Product({ product }) {
           )}
         </div>
         <div className="flex items-center justify-end gap-6">
-          <button className="w-1/2 bg-indigo-500 text-white py-2 px-4 rounded-lg mt-4 hover:bg-indigo-600 transition-colors duration-300">
+          <button
+            onClick={() => handleAddProduct(product)}
+            className="w-1/2 bg-indigo-500 text-white py-2 px-4 rounded-lg mt-4 hover:bg-indigo-600 transition-colors duration-300"
+          >
             Add to Cart
           </button>
           <Link

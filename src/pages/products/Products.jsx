@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import useGetProducts from "../../hooks/useGetProducts";
 import { Puff } from "react-loader-spinner";
 import Product from "../../component/product/Product";
+import useAddProducts from "../../hooks/useAddProducts";
 
 export default function Products() {
   const [products, setProducts] = useGetProducts();
   const [searchText, setSearchText] = useState("");
+  const [addProducts, setAddProducts, handleAddProduct] = useAddProducts();
+  // console.log(addProducts)
+  // console.log(addProducts);
   //   const handleSearch = () => {
   //     if (searchText.length === 0) return setProducts(products);
   //     const filteredProducts = products.filter((product) =>
@@ -39,7 +43,11 @@ export default function Products() {
       <div className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
         {products &&
           products?.map((product) => (
-            <Product product={product} key={product?._id} />
+            <Product
+              product={product}
+              key={product?._id}
+              handleAddProduct={handleAddProduct}
+            />
           ))}
       </div>
     </div>
