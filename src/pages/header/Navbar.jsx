@@ -116,7 +116,7 @@ export default function Navbar() {
               handleActiveRoute("/container/registration/login") &&
               "border-b-2 border-orange-400"
             }`}
-            to="/container/registration/login"
+            to="/container/registration/signup"
           >
             Login
           </Link>
@@ -191,7 +191,7 @@ export default function Navbar() {
                 handleActiveRoute("/container/registration/login") &&
                 "border-b-2 border-orange-400 text-orange-400"
               }`}
-              to="/container/registration/login"
+              to="/container/registration/signup"
             >
               Login
             </Link>

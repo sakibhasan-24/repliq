@@ -3,6 +3,9 @@ import { Helmet } from "react-helmet-async";
 import { Link, Outlet } from "react-router-dom";
 
 export default function Container() {
+  const handleClear = () => {
+    sessionStorage.removeItem("userInfo");
+  };
   return (
     <div className="max-w-xl sm:max-w-6xl mx-auto p-2 flex flex-col sm:flex-row gap-4">
       <Helmet>
@@ -19,6 +22,12 @@ export default function Container() {
           >
             Registration with mobile
           </Link>
+          <p
+            onClick={handleClear}
+            className="text-xs font-semibold hover:text-red-600 cursor-pointer mb-2"
+          >
+            clear session storage
+          </p>
         </div>
       </div>
       <div className=" w-full sm:w-2/3 md:w-3/4  ">

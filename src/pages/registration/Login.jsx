@@ -16,15 +16,15 @@ export default function Login() {
   const { currentUser } = useSelector((state) => state.user);
   // console.log(currentUser);
   const userDetails = JSON.parse(sessionStorage.getItem("userInfo"));
-  if (!userDetails) {
-    navigate("/container/registration/signup");
-    toast.error("Please Register First");
-    return;
-  }
+  console.log(userDetails);
   // console.log(userDetails);
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
+    if (!userDetails) {
+      toast.error("No account found");
+      return navigate("/container/registration/signup");
+    }
     const validPassword = bcryptjs.compareSync(password, userDetails.password);
     if (!validPassword) {
       toast.error("Invalid Credentials");

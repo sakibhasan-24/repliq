@@ -39,6 +39,8 @@
 
 - https://www.npmjs.com/package/react-helmet-async
 
+* https://redux.js.org/introduction
+* https://www.npmjs.com/package/uuidv4
 * firebas (for hoisting)
 
 ### set up
